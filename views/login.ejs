@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login | l`devpe`</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+        <style>
+            h1{
+                font-size: 5rem;
+                font-weight: bold; 
+                font-family: Nunito;
+                margin-left:3rem;
+                margin-bottom:0;
+                padding:0;
+            }
+            .container{
+                /* border: 2px solid rgb(38,81,109); */
+                width:fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 4rem;
+                height: fit-content;
+            }
+            body{
+                font-weight: bold;
+                font-family: Nunito;
+                background-color: rgb(30,69,97);
+                color: rgb(255, 255, 255);
+            }
+            form{
+                /* border: 2px solid rgba(46, 4, 161, 0.418); */
+                display:flex;
+                flex-direction: column;
+                justify-content:space-around;
+                align-items: center;
+                height: fit-content;
+            }
+            form div{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(38,81,109);
+                /* border: 2px solid red; */
+                align-items:flex-start;
+                justify-content: center;
+                font-size: 0.85rem;
+                padding: 0.5rem;
+                width: 30rem;
+                margin: 1rem;
+                border-radius: 15px;
+                color: rgb(242,244,245);
+            }
+            form div input {
+                border-color: white;
+                width: inherit;
+                height:fit-content;
+                font-size: 1.1rem;
+                background-color: inherit;
+                margin-top: 0.4rem;
+                padding:0.1rem;
+                color: rgb(255,255,255);
+                border-width:0;
+                border-left-width: 0.2rem;
+            }
+            #login{
+                display:flex;
+                flex-direction: row;
+                background-color: rgb(30,69,97);
+                align-items:stretch;
+                padding:0;
+                height:3rem;
+                justify-content: space-around;
+            }
+            #login input{
+                background-color: white;
+                width:50%;
+                border-radius: 15px;
+                font-family: Nunito;
+                font-weight: bold;
+                margin:0;
+                margin-right:1rem;
+                padding: 0;
+                font-size: 1.3rem;
+                height:inherit;
+                color:black;
+            }
+            #login a{
+                text-decoration: none;
+                background-color: white;
+                width: 50%;
+                /* margin:auto; */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 1.3rem;
+            }
+            form div input::after{
+                background-color: rgb(38,81,109);
+            }
+            p{
+                margin-left:4rem;
+                font-size: 1.7rem;
+                padding: 0;
+                margin-top:0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome back</h1>
+        <p>Design, Learn, and Contribute all in the browser-with l`devpe`</p>
+        <div class="container">
+            <p style="margin:0;margin-left: 1.5rem;font-size:1.5rem;"> <%= message %></p>
+            <form action="http://localhost:3000/login" method="POST">
+                <div>
+                    <label for="username">EMAIL</label>
+                    <input id = "username" name="email" type="email" placeholder="email" required = "true" autocomplete="off" />
+                </div>
+                <div>
+                    <label for="password">PASSWORD</label>
+                    <input id = "password" name="password" type="password" placeholder="password" required = "true" />
+                </div>
+                <span style="align-self: flex-start;margin-left: 2rem;display:flex;flex-direction: row;align-items: center"><input type = "checkbox" id="visible" name = "visibility" onclick="show()" /><p style="font-size:1rem;display:inline;margin:0;margin-left:0.7rem;">show password</p></span>
+
+                <div id="login">
+                    <input id="submit" type="submit" value="login" />
+                    <a href="http://localhost:3000/signup">signup</a>
+                </div>
+                <a href="/forgotpassword" style="color:white;"> forgot password </a>
+            </form>
+        </div>
+        <script>
+            function show(){
+                var x = document.getElementById("visible");
+                var y = document.getElementById("password");
+                var z = document.querySelector("span p");
+                if(x.checked === true)
+                {
+                    y.setAttribute("type","text");
+                    z.innerHTML = "hide password";
+                }
+                else{
+                    y.setAttribute("type","password");
+                    z.innerHTML = "show password";
+                }
+            }
+        </script>
+    </body>
+</html>

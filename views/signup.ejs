@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>signup | l`devpe`</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+        <style>
+            .container{
+                width:fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 1.5rem;
+                height: fit-content;
+            }
+            body{
+                font-weight: bold;
+                font-family: Nunito;
+                background-color: rgb(30,69,97);
+                color: rgb(255, 255, 255);
+            }
+            form{
+               
+                display:flex;
+                flex-direction: column;
+                justify-content:space-around;
+                align-items:center;
+                align-content: space-between;
+                height: fit-content;
+            }
+            form div{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(38,81,109);
+                /* border: 2px solid red; */
+                align-items:flex-start;
+                justify-content: center;
+                font-size: 0.85rem;
+                padding: 0.5rem;
+                width: 30rem;
+                margin: 1rem;
+                border-radius: 15px;
+                color: rgb(242,244,245);
+            }
+            form div input {
+                border-color: white;
+                width: inherit;
+                height:fit-content;
+                font-size: 1.1rem;
+                background-color: inherit;
+                margin-top: 0.4rem;
+                padding:0.1rem;
+                font-style: italic;
+                color: rgb(255,255,255);
+                border-width:0;
+                border-left-width: 0.2rem;
+            }
+            form div input[type="date"]{
+                height: 2rem;
+            }
+            input[type="submit"]{
+                display:block;
+                width:fit-content;
+            }
+            input[type="date"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+            input[type="date"]::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+            }
+            input[type="submit"] {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                background-color: white;
+                width:93%;
+                border-radius: 8px;
+                font-family: Nunito;
+                font-weight: bold;
+                padding: 0;
+                font-size: 1.3rem;
+                color:black;
+            }
+            h1{
+                font-size: 3.5rem;
+                font-weight: bold; 
+                font-family: Nunito;
+                margin-left:3rem;
+                margin-top: 1rem;
+                margin-bottom:0;
+                padding:0;
+            }
+            p{
+                margin-left:4rem;
+                font-size: 1.7rem;
+                padding: 0;
+                margin-top:0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Join l`devpe` today!</h1>
+        <p>Sign up to contribute</p>
+        <div class="container">
+            <form action="http://localhost:3000/signup" method="POST">
+                <div>
+                    <label for="name" >NAME</label>
+                    <input id = "name" name="name" type="text" placeholder="name" required = "true" autocomplete="off" />
+                </div>
+                <div>
+                    <label for="Emailid" >EMAIL</label>
+                    <input id = "Emailid" name="email" type="email" placeholder="email" required = "true" autocomplete="off" />
+                </div>
+                <div>
+                    <label for="password">PASSWORD</label>
+                    <input id = "password" name="password" type="password" placeholder="password" required = "true" max ="16" min = "8" autocomplete="off" />
+                </div>
+                <span style="align-self: flex-start;margin-left: 2rem;display:flex;flex-direction: row;align-items: center"><input type = "checkbox" id="visible" name = "visibility" onclick="show()" /><p style="font-size:1rem;display:inline;margin:0;margin-left:0.7rem;">show password</p></span>
+                <div>
+                    <label for="security">WHAT IS YOUR FAVORITE SPORT?</label>
+                    <input id = "security" name="security" type="text" required = "true" placeholder="cricket" required="true" autocomplete="off" />
+                </div>
+                <input type="submit" value="Join  l`devpe`" />
+            </form>
+        </div>
+        <script>
+            function show(){
+                var x = document.getElementById("visible");
+                var y = document.getElementById("password");
+                var z = document.querySelector("span p");
+                if(x.checked === true)
+                {
+                    y.setAttribute("type","text");
+                    z.innerHTML = "hide password";
+                }
+                else{
+                    y.setAttribute("type","password");
+                    z.innerHTML = "show password";
+                }
+            }
+        </script>
+    </body>
+</html>
