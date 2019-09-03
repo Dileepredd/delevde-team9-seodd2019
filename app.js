@@ -59,7 +59,7 @@ app.get("/profile",function(req,res,next){
     }
 });
 
-app.get("/login",function(req,res){
+app.get("/login",function(req,res,next){
     if(setserver === true)
     {
         res.redirect("/admin");
@@ -70,7 +70,7 @@ app.get("/login",function(req,res){
     res.render("login.ejs",{message : x});
 });
 
-app.get("/signup",function(req,res){
+app.get("/signup",function(req,res,next){
     if(setserver === true)
     {
         res.redirect("/admin");
@@ -81,7 +81,7 @@ app.get("/signup",function(req,res){
     res.render("signup.ejs",{message:x});
 });
 
-app.get("/forgotpassword",function(req,res){
+app.get("/forgotpassword",function(req,res,next){
     if(setserver === true)
     {
         res.redirect("/admin");

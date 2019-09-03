@@ -111,8 +111,8 @@
         </style>
     </head>
     <body>
-        <h1>Welcome back</h1>
-        <p>Design, Learn, and Contribute all in the browser-with l`devpe`</p>
+        <h1>Admin setup</h1>
+        <p>Drop in your database username and password to connect start the application</p>
         <div class="container">
             <p style="margin:0;margin-left: 1.5rem;font-size:1.5rem;">used to setup database in local server</p>
             <form action="http://localhost:3000/admin" method="POST">
@@ -127,12 +127,11 @@
                 <span style="align-self: flex-start;margin-left: 2rem;display:flex;flex-direction: row;align-items: center"><input type = "checkbox" id="visible" name = "visibility" onclick="show()" /><p style="font-size:1rem;display:inline;margin:0;margin-left:0.7rem;">show password</p></span>
 
                 <div id="login">
-                    <input id="submit" type="submit" value="login" />
-                    <a href="http://localhost:3000/signup">signup</a>
+                    <input id="submit" type="submit" value="connect" />
                 </div>
-                <a href="/forgotpassword" style="color:white;"> forgot password </a>
             </form>
         </div>
+        <p style="text-size:0.5rem;color:pink;text-align: center;">*app may not work as intended if wrong credentials are entered</p>
         <script>
             function show(){
                 var x = document.getElementById("visible");
