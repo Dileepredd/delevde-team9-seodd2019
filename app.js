@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
 var message = "";
+var name = "";
+var email = "";
+var contributions = [];
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded());
@@ -9,6 +12,24 @@ app.set("view engine","ejs");
 
 app.get("/",function(req,res,next){
     res.redirect("/login");
+    next();
+});
+
+app.get("/profile",function(req,res,next){
+    if(email == ""){
+        message = "login session expired";
+        res.redirect("/login")
+        next
+    }
+    else{
+        let xn = name;
+        console.log(name);
+        console.log(xn);
+        name = "";
+        let xe = email;
+        email = "";
+        res.render("profile.ejs",{name : xn,email : xe,contributions : contributions});
+    }
 });
 
 app.get("/login",function(req,res){
@@ -18,7 +39,9 @@ app.get("/login",function(req,res){
 });
 
 app.get("/signup",function(req,res){
-    res.render("signup.ejs");
+    let x = message;
+    message = "";
+    res.render("signup.ejs",{message:x});
 });
 
 app.get("/forgotpassword",function(req,res){
@@ -34,7 +57,7 @@ app.post("/forgotpassword",function(req,res,next){
         connect = mysql.createConnection({
         host : 'localhost',
         user : 'root',
-        password: '9748225345',
+        password: 'cs17b034',
         database: 'SEAug2019'
         });
         connect.connect(function(error){
@@ -87,7 +110,7 @@ app.post("/signup",function(req,res,next){
     var connect = mysql.createConnection({
         host : 'localhost',
         user : 'root',
-        password: '9748225345',
+        password: 'cs17b034',
         database: 'SEAug2019'
     });
     connect.connect(function(err){
@@ -121,7 +144,7 @@ app.post("/login",function(req,res,next){
     var connect = mysql.createConnection({
         host : 'localhost',
         user : 'root',
-        password: '9748225345',
+        password: 'cs17b034',
         database: 'SEAug2019'
     });
     connect.connect(function(err){
@@ -132,7 +155,7 @@ app.post("/login",function(req,res,next){
     });
     console.log(req.body.email);
     console.log(req.body.password);
-    connect.query("select email , password from USER where email=? and password=?;",[req.body.email,req.body.password],function(error,result,feilds){
+    connect.query("select name,email , password from USER where email=? and password=?;",[req.body.email,req.body.password],function(error,result,feilds){
         if(error){
             console.log("error while creating user account",error);
             res.send("unexpected error in server :( sorry");
@@ -143,7 +166,12 @@ app.post("/login",function(req,res,next){
             next
         }
         else{
-            res.send("thank you"); // after login
+            name = result[0].name;
+            console.log(result.name);
+            email = result[0].email;
+            //contributioss
+            res.redirect("/profile")
+            next
         }
     });
 });
