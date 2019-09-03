@@ -1,5 +1,95 @@
-<%= name %>
-<%= email %>
-<%contributions.forEach(function(ele){ %>
-    <%= ele %>
-<% }); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>
+  About Me
+</title>
+<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+<style>
+    
+#t1{
+    color: white;
+    margin-left: 5rem;
+    font-size: 2rem;
+    padding: 0rem;
+}
+
+#hi{
+    background-color: black;
+    font-family: Nunito;
+}
+#about{
+   color: white;
+   font-size: 5rem;
+   margin-left: 5rem;
+   margin-top: 7rem;
+   padding: 0%;
+   margin-bottom: 0rem;
+
+}
+#me{
+  color: green;
+  padding: 0rem;
+}
+#n1{
+   color: green;
+   font-size: 2rem;
+   margin-left: 5rem;
+   margin-bottom:1rem;
+
+}
+#n2{
+  color: white;
+  padding: 0rem;
+}
+#t1{
+    color: white;
+    margin-left: 5rem;
+    font-size: 2rem;
+    padding: 0rem;
+    margin-top: 0rem;
+}
+#i3{
+    border-radius: 2rem;
+    border: 0.3rem solid white;
+    padding:5rem;
+    color:aliceblue;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    text-align: center;
+}
+</style>
+</head>
+
+<body id="hi">
+
+    <div id="about">
+        About <span id="me">Me</span>
+    </div>
+
+   <p id="t1">
+        A small intro about me
+    </p>
+
+    <div id="n1">
+        Name: <span id="n2"><%= name %></span>
+    </div>
+    
+    <div id="n1">
+        Email: <span id="n2"><%= email %></span>
+    </div>
+
+    <div id="n1">
+        Contribution:
+    </div>
+    <% if(contributions.length == 0) { %>
+        <div id="i3">There are no contributions from you yet</div>
+    <%} else {%>
+    <%contributions.forEach(function(ele){ %>
+        <div id="i3"><%= ele %></div>
+    <% });}%>
+</body>
+</html>
