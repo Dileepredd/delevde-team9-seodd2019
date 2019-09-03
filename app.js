@@ -4,18 +4,45 @@ var message = "";
 var name = "";
 var email = "";
 var contributions = [];
+var setserver = true;
+var username = "";
+var password = "";
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded());
 
 app.set("view engine","ejs");
 
-app.get("/",function(req,res,next){
+app.get("/admin",function(req,res,next){
+    if(setserver === true){
+        res.render("admin.ejs");
+    }
+    else{
+        message = "please restart your server to access admin page";
+        res.redirect("/login");
+        next();
+    }
+});
+app.post("/admin",function(req,res,next){
+    if(setserver === true){
+        setserver = false;
+        username = req.body.username;
+        password = req.body.password;
+    }
     res.redirect("/login");
+    next();
+});
+app.get("/",function(req,res,next){
+    res.redirect("/admin");
     next();
 });
 
 app.get("/profile",function(req,res,next){
+    if(setserver === true)
+    {
+        res.redirect("/admin");
+        next();
+    }
     if(email == ""){
         message = "login session expired";
         res.redirect("/login")
@@ -33,18 +60,33 @@ app.get("/profile",function(req,res,next){
 });
 
 app.get("/login",function(req,res){
+    if(setserver === true)
+    {
+        res.redirect("/admin");
+        next();
+    }
     let x = message;
     message = "";
     res.render("login.ejs",{message : x});
 });
 
 app.get("/signup",function(req,res){
+    if(setserver === true)
+    {
+        res.redirect("/admin");
+        next();
+    }
     let x = message;
     message = "";
     res.render("signup.ejs",{message:x});
 });
 
 app.get("/forgotpassword",function(req,res){
+    if(setserver === true)
+    {
+        res.redirect("/admin");
+        next();
+    }
     let x = message;
     message = "";
     res.render("forgotpassword.ejs",{message:x});
@@ -56,8 +98,8 @@ app.post("/forgotpassword",function(req,res,next){
         var mysql = require("mysql");
         connect = mysql.createConnection({
         host : 'localhost',
-        user : 'root',
-        password: 'cs17b034',
+        user : username,
+        password: password,
         database: 'SEAug2019'
         });
         connect.connect(function(error){
@@ -109,8 +151,8 @@ app.post("/signup",function(req,res,next){
     var mysql = require('mysql');
     var connect = mysql.createConnection({
         host : 'localhost',
-        user : 'root',
-        password: 'cs17b034',
+        user : username,
+        password: password,
         database: 'SEAug2019'
     });
     connect.connect(function(err){
@@ -143,8 +185,8 @@ app.post("/login",function(req,res,next){
     var mysql = require('mysql');
     var connect = mysql.createConnection({
         host : 'localhost',
-        user : 'root',
-        password: 'cs17b034',
+        user : username,
+        password: password,
         database: 'SEAug2019'
     });
     connect.connect(function(err){
