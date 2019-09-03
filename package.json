@@ -1,7 +1,7 @@
 {
-  "name": "delevde-team9-seodd2019",
+  "name": "l-devpe--team9-seodd2019",
   "version": "1.0.0",
-  "description": "web site to learn web development by Q/A mechanism.",
+  "description": "learn design and contribute",
   "main": "app.js",
   "directories": {
     "test": "test"
