@@ -1,6 +1,6 @@
 # l-devpe--Team9-SEAug2019
-Steps to deploy the website on your pc:
--> Firstly, you need to install node.js and then provide path
+<br/>Steps to deploy the website on your pc:
+<br/>-> Firstly, you need to install node.js and then provide path
 -> And then proceed to installing the "mysql" server and client
 -> Make sure the database files target the current path of our mysql folder
 -> Start running the mysql service using "sudo service mysql start"
